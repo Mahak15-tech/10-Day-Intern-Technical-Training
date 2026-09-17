@@ -1,66 +1,113 @@
 # 🚀 10-Day Intern Technical Training
 
-A structured 10-day technical training program covering programming,
-Python, data analysis, machine learning, web development, and databases.
+A structured technical training program focused on programming,
+data science, machine learning, and full-stack development.
 
-## 👩‍💻 Trainee
+This repository contains daily exercises, practical projects,
+and learning outcomes completed during the internship training.
 
-**Name:** Mahak Sunil Kamble  
+---
+
+## 👩‍💻 Trainee Information
+
+**Name:** Mahak Sunil Kamble
+
 **Branch:** B.E. Computer Science & Engineering (Data Science)
 
 ---
 
-## 📚 Training Roadmap
+## 📚 Training Progress
 
 | Day | Topics | Status |
 |-----|--------|--------|
 | Day 1 | Programming Fundamentals & Problem Solving | ✅ Completed |
-| Day 2 | Python, OOP, File Handling & CSV Analysis | ✅ Completed |
-| Day 3 | NumPy, Pandas & Data Visualization | ⏳ Upcoming |
-| Day 4 | Machine Learning Concepts & Evaluation | ⏳ Upcoming |
-| Day 5 | JavaScript, Async Programming & APIs | ⏳ Upcoming |
+| Day 2 | Python, OOP & CSV Analysis | ✅ Completed |
+| Day 3 | NumPy, Pandas & Data Visualization | ✅ Completed |
+| Day 4 | Machine Learning & Model Evaluation | ✅ Completed |
+| Day 5 | JavaScript & APIs | ✅ Completed |
 | Day 6 | TypeScript & React | ⏳ Upcoming |
 | Day 7 | Next.js & Node.js | ⏳ Upcoming |
 | Day 8 | SQL & Laravel | ⏳ Upcoming |
-| Day 9 | Angular, RxJS & APIs | ⏳ Upcoming |
+| Day 9 | Angular & RxJS | ⏳ Upcoming |
 | Day 10 | Final Project & Presentation | ⏳ Upcoming |
+
+**Current Progress: 5 / 10 Days**
 
 ---
 
-## 🛠️ Technologies
+## 🛠️ Technological Stack
 
+### Programming Languages
 - Python
-- Object-Oriented Programming
-- CSV File Handling
-- NumPy & Pandas
-- Data Visualization
-- Machine Learning
 - JavaScript
 - TypeScript
+- SQL
+
+### Data Science & Machine Learning
+- NumPy
+- Pandas
+- Matplotlib
+- Scikit-learn
+
+### Web Development
 - React
 - Next.js
 - Node.js
-- SQL
-- Laravel
 - Angular
-- Git & GitHub
+- Laravel
+- REST APIs
+
+### Tools
+- Git
+- GitHub
+- Visual Studio Code
 
 ---
 
-## 📂 Repository Structure
+## 🎯 Objective
 
-```text
-10-Day-Intern-Technical-Training/
-│
-├── day-01/
-├── day-02/
-├── day-03/
-├── day-04/
-├── day-05/
-├── day-06/
-├── day-07/
-├── day-08/
-├── day-09/
-├── day-10/
-│
-└── README.md
+The objective of this 10-day technical training program is to
+strengthen programming, data science, machine learning, and
+full-stack development skills through practical implementation.
+
+The training focuses on:
+
+- Improving problem-solving abilities
+- Developing programming fundamentals
+- Understanding data analysis and machine learning
+- Learning modern web development technologies
+- Building practical projects
+- Using Git and GitHub for version control
+- Improving documentation and debugging skills
+
+---
+
+## ✅ Learning Deliverables
+
+Each training day includes:
+
+- Learning notes
+- Practical coding exercises
+- Project implementation
+- Testing and debugging
+- Git commits
+- README documentation
+
+---
+
+## 📌 Progress Updates
+
+This repository will be updated regularly as the training
+program progresses.
+
+**Completed:** 5 / 10 Days
+
+**Status:** Ongoing 🚀
+
+---
+
+## 🙌 Acknowledgement
+
+This repository was created as part of my intern technical
+training program to document my learning journey, practical
+work, and technical development.
