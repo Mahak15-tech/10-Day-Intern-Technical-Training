@@ -1,50 +1,76 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-data = {
-    "Facility": ["Hospital A", "Hospital B", "Hospital C", "Hospital D", "Hospital E"],
-    "Patients": [120, 150, 100, 180, 130],
-    "Staff": [25, 30, 20, 35, 28],
-    "Satisfaction": [85, 90, 78, 92, 88]
-}
+# Load Excel dataset
+df = pd.read_excel("facility_hygiene_ml_dataset.xlsx")
 
-df = pd.DataFrame(data)
+print("First 5 Records:")
+print(df.head())
 
-print("Facility Dataset:")
-print(df)
+print("\nDataset Shape:")
+print(df.shape)
 
-print("\nDataset Information:")
-print(df.info())
+print("\nMissing Values:")
+print(df.isnull().sum())
+
+print("\nDuplicate Records:")
+print(df.duplicated().sum())
+
+# Data cleaning
+df = df.drop_duplicates()
+
+df["cleanliness_score"] = df["cleanliness_score"].fillna(
+    df["cleanliness_score"].mean()
+)
+
+df["waste_level"] = df["waste_level"].fillna(
+    df["waste_level"].mean()
+)
+
+df["water_availability"] = df["water_availability"].fillna("Unknown")
+
+print("\nCleaned Dataset:")
+print(df.head())
 
 print("\nStatistical Summary:")
 print(df.describe())
 
-print("\nAverage Patients:", df["Patients"].mean())
-print("Average Satisfaction:", df["Satisfaction"].mean())
+print("\nHygiene Risk Counts:")
+print(df["hygiene_risk"].value_counts())
 
-plt.bar(df["Facility"], df["Patients"])
-plt.title("Patients per Facility")
-plt.xlabel("Facility")
-plt.ylabel("Number of Patients")
-plt.xticks(rotation=45)
-plt.tight_layout()
-plt.show()
-# Staff comparison
+# Chart 1: Hygiene Risk Distribution
 plt.figure()
-plt.bar(df["Facility"], df["Staff"])
-plt.title("Staff per Facility")
-plt.xlabel("Facility")
-plt.ylabel("Number of Staff")
-plt.xticks(rotation=45)
+df["hygiene_risk"].value_counts().plot(kind="bar")
+plt.title("Hygiene Risk Distribution")
+plt.xlabel("Hygiene Risk")
+plt.ylabel("Number of Facilities")
 plt.tight_layout()
 plt.show()
 
-# Satisfaction comparison
+# Chart 2: Cleanliness Score
 plt.figure()
-plt.plot(df["Facility"], df["Satisfaction"], marker="o")
-plt.title("Facility Satisfaction")
-plt.xlabel("Facility")
-plt.ylabel("Satisfaction (%)")
+plt.hist(df["cleanliness_score"], bins=10)
+plt.title("Cleanliness Score Distribution")
+plt.xlabel("Cleanliness Score")
+plt.ylabel("Frequency")
+plt.tight_layout()
+plt.show()
+
+# Chart 3: Waste Level
+plt.figure()
+plt.hist(df["waste_level"], bins=10)
+plt.title("Waste Level Distribution")
+plt.xlabel("Waste Level")
+plt.ylabel("Frequency")
+plt.tight_layout()
+plt.show()
+
+# Chart 4: Facility Type
+plt.figure()
+df["facility_type"].value_counts().plot(kind="bar")
+plt.title("Facilities by Type")
+plt.xlabel("Facility Type")
+plt.ylabel("Count")
 plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
