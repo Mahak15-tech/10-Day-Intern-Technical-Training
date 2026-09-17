@@ -1,19 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Employee Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
+  <header>
     <h1>Employee Dashboard</h1>
+    <div class="stats">
+      <div class="stat"><span id="stat-total">0</span><label>Total Employees</label></div>
+      <div class="stat"><span id="stat-avg-salary">0</span><label>Average Salary</label></div>
+      <div class="stat"><span id="stat-departments">0</span><label>Departments</label></div>
+    </div>
+  </header>
 
-    <button onclick="loadEmployees()">Load Employees</button>
+  <div id="error-box" class="error hidden"></div>
 
-    <div id="employee-container"></div>
+  <main>
+    <section class="list-section">
+      <div class="controls">
+        <input id="search-input" type="text" placeholder="Search by name..." />
+        <select id="department-filter">
+          <option value="all">All departments</option>
+        </select>
+        <select id="sort-field">
+          <option value="name">Sort: Name</option>
+          <option value="department">Sort: Department</option>
+          <option value="salary">Sort: Salary</option>
+        </select>
+        <button id="sort-direction" type="button">↑ Asc</button>
+      </div>
 
-    <script src="script.js"></script>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Salary</th>
+            <th>Email</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="employee-table-body"></tbody>
+      </table>
+    </section>
+
+    <aside class="side-panel">
+      <div class="details-card">
+        <h2>Details</h2>
+        <div id="details-panel"><p class="muted">Select "View" on an employee to see details here.</p></div>
+      </div>
+
+      <div class="form-card">
+        <h2 id="form-title">Add Employee</h2>
+        <form id="employee-form">
+          <label>Name<input id="input-name" type="text" required /></label>
+          <label>Department<input id="input-department" type="text" required /></label>
+          <label>Salary<input id="input-salary" type="number" min="0" step="1" required /></label>
+          <label>Email<input id="input-email" type="email" /></label>
+          <div class="form-actions">
+            <button type="submit">Save</button>
+            <button type="button" id="cancel-edit" class="hidden">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </aside>
+  </main>
+
+  <script src="api.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
