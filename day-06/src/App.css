@@ -456,3 +456,20 @@ footer {
 .dark-mode footer {
   color: #b9a8c1;
 }
+
+body {
+  margin: 0;
+  background: #f8f3f9;
+  transition: background 0.3s ease;
+}
+
+body.dark-mode {
+  background: #292333;
+  color: #f5edf7;
+}
+
+body.dark-mode #root {
+  background: #292333;
+  min-height: 100vh;
+}
+

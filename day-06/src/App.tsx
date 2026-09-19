@@ -19,11 +19,11 @@ function App() {
   useEffect(() => {
     localStorage.setItem("employees", JSON.stringify(employees));
     }, [employees]);
-  const resetEmployees = () => {
-    setEmployees(initialEmployees);
-    localStorage.removeItem("employees");
-  };
   const [darkMode, setDarkMode] = useState(false);
+  
+  useEffect(() => {
+    document.body.classList.toggle("dark-mode", darkMode);
+  }, [darkMode]);
 
   const departments = [
     "All",
@@ -105,9 +105,8 @@ function App() {
           <button className="primary-button" onClick={() => setShowForm(true)}>
             + Add Employee
           </button>
+        </div> 
 
-          <button className="reset-button" onClick={resetEmployees}></button>
-        </div>
         <div className="hero-decoration">✿</div>
       </section>
 
