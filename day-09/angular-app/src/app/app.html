@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>Employee Dashboard</h1>
+
+  <div class="employee-grid">
+    @for (employee of employees; track employee.id) {
+      <div class="employee-card">
+        <h2>{{ employee.name }}</h2>
+        <p>Department: {{ employee.department }}</p>
+        <p>Salary: ₹{{ employee.salary }}</p>
+        <p>Email: {{ employee.email }}</p>
+      </div>
+    }
+  </div>
+</div>
