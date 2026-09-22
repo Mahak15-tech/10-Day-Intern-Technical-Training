@@ -25,13 +25,13 @@ and learning outcomes completed during the internship training.
 | Day 3 | NumPy, Pandas & Data Visualization | ✅ Completed |
 | Day 4 | Machine Learning & Model Evaluation | ✅ Completed |
 | Day 5 | JavaScript & APIs | ✅ Completed |
-| Day 6 | TypeScript & React | ⏳ Upcoming |
-| Day 7 | Next.js & Node.js | ⏳ Upcoming |
-| Day 8 | SQL & Laravel | ⏳ Upcoming |
-| Day 9 | Angular & RxJS | ⏳ Upcoming |
-| Day 10 | Final Project & Presentation | ⏳ Upcoming |
+| Day 6 | TypeScript & React |✅ Completed |
+| Day 7 | Next.js & Node.js |✅ Completed |
+| Day 8 | SQL & Laravel |✅ Completed|
+| Day 9 | Angular & RxJS |✅ Completed|
+| Day 10 | Final Project & Presentation |✅Completed| 
 
-**Current Progress: 5 / 10 Days**
+**Current Progress: 10 / 10 Days**
 
 ---
 
@@ -100,9 +100,7 @@ Each training day includes:
 This repository will be updated regularly as the training
 program progresses.
 
-**Completed:** 5 / 10 Days
-
-**Status:** Ongoing 🚀
+**Completed:** 10 / 10 Days
 
 ---
 

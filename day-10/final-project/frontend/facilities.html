@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>HygieneSense | Facilities</title>
+
+    <link
+        rel="stylesheet"
+        href="styles.css"
+    >
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                🌿
+            </div>
+
+            <div>
+
+                <h2>
+                    HygieneSense
+                </h2>
+
+                <span>
+                    Smart Facility Analytics
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <nav class="navigation">
+
+            <button
+                class="nav-item"
+                data-page="index.html"
+            >
+                <span>⌂</span>
+                Dashboard
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-page="assessment.html"
+            >
+                <span>＋</span>
+                New Assessment
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-page="history.html"
+            >
+                <span>◷</span>
+                Prediction History
+            </button>
+
+
+            <button
+                class="nav-item active"
+                data-page="facilities.html"
+            >
+                <span>▦</span>
+                Facilities
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-page="analytics.html"
+            >
+                <span>◔</span>
+                Analytics
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-page="settings.html"
+            >
+                <span>⚙</span>
+                Settings
+            </button>
+
+        </nav>
+
+
+        <div class="sidebar-footer">
+
+            <div class="system-status">
+
+                <div class="status-dot"></div>
+
+                <div>
+
+                    <strong>
+                        Prediction System
+                    </strong>
+
+                    <small>
+                        Ready for assessment
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="main-content">
+
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <span class="eyebrow">
+                    FACILITY MANAGEMENT
+                </span>
+
+                <h1>
+                    Facilities
+                </h1>
+
+                <p>
+                    View all facilities registered in the system.
+                </p>
+
+            </div>
+
+
+            <div class="topbar-actions">
+
+                <div
+                    class="api-status"
+                    id="apiStatus"
+                >
+                    <span></span>
+                    Checking system...
+                </div>
+
+
+                <button
+                    class="theme-toggle"
+                    id="themeToggle"
+                    aria-label="Toggle theme"
+                >
+                    ☾
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+             HERO
+        ========================== -->
+
+        <section class="page-hero">
+
+            <span class="eyebrow">
+                REGISTERED LOCATIONS
+            </span>
+
+            <h2>
+                Know your facilities.
+            </h2>
+
+            <p>
+                These facilities are stored in the
+                MySQL database and can be selected when
+                creating a new hygiene assessment.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             FACILITY TABLE
+        ========================== -->
+
+        <section class="dashboard-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <span class="eyebrow">
+                        FACILITY DIRECTORY
+                    </span>
+
+                    <h3>
+                        Registered Facilities
+                    </h3>
+
+                </div>
+
+                <div class="card-symbol">
+                    ▦
+                </div>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table class="data-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                #
+                            </th>
+
+                            <th>
+                                Facility ID
+                            </th>
+
+                            <th>
+                                Location
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="facilitiesTable">
+
+                        <tr>
+
+                            <td
+                                colspan="3"
+                                class="empty-state"
+                            >
+                                Loading facilities...
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             FACILITY INFORMATION
+        ========================== -->
+
+        <section class="dashboard-grid">
+
+
+            <div class="dashboard-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            DATABASE
+                        </span>
+
+                        <h3>
+                            Facility Information
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-list">
+
+                    <div>
+
+                        <span>
+                            Database
+                        </span>
+
+                        <strong>
+                            MySQL
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Database Name
+                        </span>
+
+                        <strong>
+                            hygiene_prediction_db
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Table
+                        </span>
+
+                        <strong>
+                            facilities
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            API Endpoint
+                        </span>
+
+                        <strong>
+                            /facilities
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-card action-card">
+
+                <span class="eyebrow">
+                    HYGIENE CHECK
+                </span>
+
+                <h3>
+                    Assess a facility.
+                </h3>
+
+                <p>
+                    Select one of the registered facilities
+                    and provide its current hygiene conditions.
+                </p>
+
+                <a
+                    href="assessment.html"
+                    class="secondary-action"
+                >
+                    Start Assessment →
+                </a>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer class="footer">
+
+            <span>
+                HygieneSense · Smart Facility Hygiene Risk Prediction
+            </span>
+
+            <span>
+                Flask API · MySQL
+            </span>
+
+        </footer>
+
+
+    </main>
+
+</div>
+
+
+<script src="app.js"></script>
+
+</body>
+
+</html>

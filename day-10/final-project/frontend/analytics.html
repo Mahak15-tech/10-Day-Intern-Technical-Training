@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>HygieneSense | Analytics</title>
+
+    <link
+        rel="stylesheet"
+        href="styles.css"
+    >
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+
+<body>
+
+<div class="app-layout">
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                🌿
+            </div>
+
+            <div>
+
+                <h2>
+                    HygieneSense
+                </h2>
+
+                <span>
+                    Smart Facility Analytics
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <nav class="navigation">
+
+            <button
+                class="nav-item"
+                data-page="index.html"
+            >
+                <span>⌂</span>
+                Dashboard
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-page="assessment.html"
+            >
+                <span>＋</span>
+                New Assessment
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-page="history.html"
+            >
+                <span>◷</span>
+                Prediction History
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-page="facilities.html"
+            >
+                <span>▦</span>
+                Facilities
+            </button>
+
+
+            <button
+                class="nav-item active"
+                data-page="analytics.html"
+            >
+                <span>◔</span>
+                Analytics
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-page="settings.html"
+            >
+                <span>⚙</span>
+                Settings
+            </button>
+
+        </nav>
+
+
+        <div class="sidebar-footer">
+
+            <div class="system-status">
+
+                <div class="status-dot"></div>
+
+                <div>
+
+                    <strong>
+                        Prediction System
+                    </strong>
+
+                    <small>
+                        Ready for assessment
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="main-content">
+
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <span class="eyebrow">
+                    INSIGHTS
+                </span>
+
+                <h1>
+                    Analytics
+                </h1>
+
+                <p>
+                    Understand hygiene risk patterns across your facilities.
+                </p>
+
+            </div>
+
+
+            <div class="topbar-actions">
+
+                <div
+                    class="api-status"
+                    id="apiStatus"
+                >
+                    <span></span>
+                    Checking system...
+                </div>
+
+
+                <button
+                    class="theme-toggle"
+                    id="themeToggle"
+                    aria-label="Toggle theme"
+                >
+                    ☾
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+             PAGE HERO
+        ========================== -->
+
+        <section class="page-hero">
+
+            <span class="eyebrow">
+                FACILITY INSIGHTS
+            </span>
+
+            <h2>
+                See the bigger picture.
+            </h2>
+
+            <p>
+                Track predictions and understand how many
+                facilities currently fall into each hygiene
+                risk category.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             ANALYTICS STATS
+        ========================== -->
+
+        <section class="stats-grid">
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    ▦
+                </div>
+
+                <div>
+
+                    <span>
+                        Facilities
+                    </span>
+
+                    <strong id="analyticsFacilities">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    ◷
+                </div>
+
+                <div>
+
+                    <span>
+                        Predictions
+                    </span>
+
+                    <strong id="analyticsPredictions">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon yellow">
+                    !
+                </div>
+
+                <div>
+
+                    <span>
+                        High Risk
+                    </span>
+
+                    <strong id="analyticsHighRisk">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+                    ✓
+                </div>
+
+                <div>
+
+                    <span>
+                        Low Risk
+                    </span>
+
+                    <strong id="analyticsLowRisk">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             RISK CHART
+        ========================== -->
+
+        <section class="dashboard-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <span class="eyebrow">
+                        RISK DISTRIBUTION
+                    </span>
+
+                    <h3>
+                        Hygiene Risk Overview
+                    </h3>
+
+                </div>
+
+                <div class="card-symbol">
+                    ◔
+                </div>
+
+            </div>
+
+
+            <div class="chart-container">
+
+                <canvas id="riskChart"></canvas>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             MODEL INFORMATION
+        ========================== -->
+
+        <section class="dashboard-grid">
+
+
+            <div class="dashboard-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            MACHINE LEARNING
+                        </span>
+
+                        <h3>
+                            Prediction Model
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-list">
+
+                    <div>
+
+                        <span>
+                            Problem Type
+                        </span>
+
+                        <strong>
+                            Classification
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Prediction Classes
+                        </span>
+
+                        <strong>
+                            High / Low
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Input Features
+                        </span>
+
+                        <strong>
+                            6 Features
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Backend
+                        </span>
+
+                        <strong>
+                            Flask + Python
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            INPUT FEATURES
+                        </span>
+
+                        <h3>
+                            Assessment Factors
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="feature-tags">
+
+                    <span>
+                        Cleanliness
+                    </span>
+
+                    <span>
+                        Odor
+                    </span>
+
+                    <span>
+                        Waste Level
+                    </span>
+
+                    <span>
+                        Water Availability
+                    </span>
+
+                    <span>
+                        Footfall
+                    </span>
+
+                    <span>
+                        Complaints
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             EXPLANATION
+        ========================== -->
+
+        <section class="dashboard-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <span class="eyebrow">
+                        HOW IT WORKS
+                    </span>
+
+                    <h3>
+                        From assessment to prediction
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="process-grid">
+
+
+                <div class="process-step">
+
+                    <div class="process-number">
+                        01
+                    </div>
+
+                    <h4>
+                        Collect
+                    </h4>
+
+                    <p>
+                        Enter the current hygiene conditions
+                        of a registered facility.
+                    </p>
+
+                </div>
+
+
+                <div class="process-step">
+
+                    <div class="process-number">
+                        02
+                    </div>
+
+                    <h4>
+                        Predict
+                    </h4>
+
+                    <p>
+                        The trained machine learning model
+                        evaluates the facility.
+                    </p>
+
+                </div>
+
+
+                <div class="process-step">
+
+                    <div class="process-number">
+                        03
+                    </div>
+
+                    <h4>
+                        Analyze
+                    </h4>
+
+                    <p>
+                        Predictions are stored in MySQL
+                        for future analysis.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer class="footer">
+
+            <span>
+                HygieneSense · Smart Facility Hygiene Risk Prediction
+            </span>
+
+            <span>
+                Flask API · MySQL · Machine Learning
+            </span>
+
+        </footer>
+
+
+    </main>
+
+</div>
+
+
+<script src="app.js"></script>
+
+</body>
+
+</html>

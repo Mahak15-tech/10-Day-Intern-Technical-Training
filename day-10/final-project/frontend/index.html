@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HygieneSense | Dashboard</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                🌿
+            </div>
+
+            <div>
+                <h2>HygieneSense</h2>
+                <span>Smart Facility Analytics</span>
+            </div>
+
+        </div>
+
+
+        <nav class="navigation">
+
+            <button
+                class="nav-item active"
+                data-page="index.html"
+            >
+                <span>⌂</span>
+                Dashboard
+            </button>
+
+            <button
+                class="nav-item"
+                data-page="assessment.html"
+            >
+                <span>＋</span>
+                New Assessment
+            </button>
+
+            <button
+                class="nav-item"
+                data-page="history.html"
+            >
+                <span>◷</span>
+                Prediction History
+            </button>
+
+            <button
+                class="nav-item"
+                data-page="facilities.html"
+            >
+                <span>▦</span>
+                Facilities
+            </button>
+
+            <button
+                class="nav-item"
+                data-page="analytics.html"
+            >
+                <span>◔</span>
+                Analytics
+            </button>
+
+            <button
+                class="nav-item"
+                data-page="settings.html"
+            >
+                <span>⚙</span>
+                Settings
+            </button>
+
+        </nav>
+
+
+        <div class="sidebar-footer">
+
+            <div class="system-status">
+
+                <div class="status-dot"></div>
+
+                <div>
+                    <strong>Prediction System</strong>
+                    <small>Ready for assessment</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="main-content">
+
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <span class="eyebrow">
+                    FACILITY OVERVIEW
+                </span>
+
+                <h1>Dashboard</h1>
+
+                <p>
+                    Monitor facility hygiene and predicted risk levels.
+                </p>
+
+            </div>
+
+
+            <div class="topbar-actions">
+
+                <div
+                    class="api-status"
+                    id="apiStatus"
+                >
+                    <span></span>
+                    Checking system...
+                </div>
+
+                <button
+                    class="theme-toggle"
+                    id="themeToggle"
+                    aria-label="Toggle theme"
+                >
+                    ☾
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+     WELCOME HERO
+================================================== -->
+
+<section class="welcome-panel">
+
+    <div class="welcome-content">
+
+        <span class="eyebrow">
+            SMART HYGIENE MONITORING
+        </span>
+
+        <div class="hero-title-block">
+
+            <h2>
+                Keep every facility
+                <br>
+                <em>clean, safe & healthy.</em>
+            </h2>
+
+            <p>
+                Use machine learning to assess facility conditions
+                and identify potential hygiene risks.
+            </p>
+
+        </div>
+
+
+        <!-- START ASSESSMENT BLOCK -->
+
+        <a
+            href="assessment.html"
+            class="assessment-action"
+        >
+
+            <div class="assessment-action-icon">
+                ✦
+            </div>
+
+            <div class="assessment-action-content">
+
+                <span>
+                    NEW ASSESSMENT
+                </span>
+
+                <strong>
+                    Start New Assessment
+                </strong>
+
+                <small>
+                    Check a facility and generate an AI hygiene risk prediction.
+                </small>
+
+            </div>
+
+            <div class="assessment-action-arrow">
+                →
+            </div>
+
+        </a>
+
+    </div>
+
+</section>
+
+
+        <!-- =========================
+             STATISTICS
+        ========================== -->
+
+        <section class="stats-grid">
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <span>FACILITIES</span>
+
+                    <div class="stat-symbol">
+                        ▦
+                    </div>
+
+                </div>
+
+                <h3 id="facilityCount">
+                    0
+                </h3>
+
+                <p>
+                    Registered facilities
+                </p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <span>PREDICTIONS</span>
+
+                    <div class="stat-symbol">
+                        ◔
+                    </div>
+
+                </div>
+
+                <h3 id="predictionCount">
+                    0
+                </h3>
+
+                <p>
+                    Total assessments
+                </p>
+
+            </div>
+
+
+            <div class="stat-card high-risk-stat">
+
+                <div class="stat-top">
+
+                    <span>HIGH RISK</span>
+
+                    <div class="stat-symbol">
+                        !
+                    </div>
+
+                </div>
+
+                <h3 id="highRiskCount">
+                    0
+                </h3>
+
+                <p>
+                    Facilities requiring attention
+                </p>
+
+            </div>
+
+
+            <div class="stat-card low-risk-stat">
+
+                <div class="stat-top">
+
+                    <span>LOW RISK</span>
+
+                    <div class="stat-symbol">
+                        ✓
+                    </div>
+
+                </div>
+
+                <h3 id="lowRiskCount">
+                    0
+                </h3>
+
+                <p>
+                    Lower-risk assessments
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =========================
+             DASHBOARD COLUMNS
+        ========================== -->
+
+        <section class="dashboard-columns">
+
+
+            <!-- LEFT -->
+
+            <div class="dashboard-main">
+
+
+                <!-- RECENT PREDICTIONS -->
+
+                <div class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <span class="eyebrow">
+                                ACTIVITY
+                            </span>
+
+                            <h3>
+                                Recent Predictions
+                            </h3>
+
+                        </div>
+
+                        <a
+                            href="history.html"
+                            class="view-link"
+                        >
+                            View all →
+                        </a>
+
+                    </div>
+
+
+                    <div class="table-wrapper">
+
+                        <table class="data-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        Facility
+                                    </th>
+
+                                    <th>
+                                        Risk
+                                    </th>
+
+                                    <th>
+                                        Confidence
+                                    </th>
+
+                                    <th>
+                                        Date
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="recentPredictions">
+
+                                <tr>
+
+                                    <td
+                                        colspan="4"
+                                        class="empty-state"
+                                    >
+                                        Loading predictions...
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RISK SUMMARY -->
+
+                <div class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <span class="eyebrow">
+                                RISK OVERVIEW
+                            </span>
+
+                            <h3>
+                                Current Risk Distribution
+                            </h3>
+
+                        </div>
+
+                        <div class="card-symbol">
+                            ◔
+                        </div>
+
+                    </div>
+
+
+                    <div class="risk-summary">
+
+
+                        <div class="risk-summary-item">
+
+                            <div class="risk-summary-icon high">
+                                !
+                            </div>
+
+                            <div>
+
+                                <strong id="riskSummaryHigh">
+                                    0
+                                </strong>
+
+                                <span>
+                                    High Risk
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="risk-summary-item">
+
+                            <div class="risk-summary-icon low">
+                                ✓
+                            </div>
+
+                            <div>
+
+                                <strong id="riskSummaryLow">
+                                    0
+                                </strong>
+
+                                <span>
+                                    Low Risk
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="risk-bar">
+
+                        <div
+                            class="risk-bar-high"
+                            id="riskBarHigh"
+                        ></div>
+
+                        <div
+                            class="risk-bar-low"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- RIGHT -->
+
+            <div class="dashboard-side">
+
+
+                <!-- FACILITIES -->
+
+                <div class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <span class="eyebrow">
+                                LOCATIONS
+                            </span>
+
+                            <h3>
+                                Facilities
+                            </h3>
+
+                        </div>
+
+                        <a
+                            href="facilities.html"
+                            class="view-link"
+                        >
+                            View all →
+                        </a>
+
+                    </div>
+
+
+                    <div
+                        class="facility-list"
+                        id="facilityList"
+                    >
+
+                        <p class="empty-state">
+                            Loading facilities...
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ACTION CARD -->
+
+                <div class="dashboard-card action-card">
+
+                    <span class="eyebrow">
+                        QUICK ACTION
+                    </span>
+
+                    <h3>
+                        Run a new hygiene assessment.
+                    </h3>
+
+                    <p>
+                        Enter current facility conditions
+                        and let the ML model estimate
+                        the hygiene risk.
+                    </p>
+
+                    <a
+                        href="assessment.html"
+                        class="secondary-action"
+                    >
+                        Start Assessment →
+                    </a>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer class="footer">
+
+            <span>
+                HygieneSense · Smart Facility Hygiene Risk Prediction
+            </span>
+
+            <span>
+                Python · Flask · Machine Learning · MySQL
+            </span>
+
+        </footer>
+
+
+    </main>
+
+</div>
+
+
+<script src="app.js"></script>
+
+</body>
+
+</html>

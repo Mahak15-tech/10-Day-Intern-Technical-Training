@@ -1,14 +1,68 @@
 <div class="container">
-  <h1>Employee Dashboard</h1>
+  <h1>Smart Facility Management Dashboard</h1>
 
-  <div class="employee-grid">
-    @for (employee of employees; track employee.id) {
-      <div class="employee-card">
-        <h2>{{ employee.name }}</h2>
-        <p>Department: {{ employee.department }}</p>
-        <p>Salary: ₹{{ employee.salary }}</p>
-        <p>Email: {{ employee.email }}</p>
+  <section class="employees-section">
+    <h2>Employee Dashboard</h2>
+
+    <div class="employee-grid">
+      @for (employee of employees; track employee.id) {
+        <div class="employee-card">
+          <h3>{{ employee.name }}</h3>
+          <p>Department: {{ employee.department }}</p>
+          <p>Salary: ₹{{ employee.salary }}</p>
+          <p>Email: {{ employee.email }}</p>
+        </div>
+      }
+    </div>
+  </section>
+
+  <section class="prediction-section">
+    <h2>Hygiene Risk Prediction</h2>
+    <p>Enter facility inspection details.</p>
+
+    <div class="form-grid">
+      <label>
+        Cleanliness Score
+        <input type="number" [(ngModel)]="hygieneData.cleanliness_score">
+      </label>
+
+      <label>
+        Odor Score
+        <input type="number" [(ngModel)]="hygieneData.odor_score">
+      </label>
+
+      <label>
+        Waste Level
+        <input type="number" [(ngModel)]="hygieneData.waste_level">
+      </label>
+
+      <label>
+        Complaints
+        <input type="number" [(ngModel)]="hygieneData.complaints">
+      </label>
+
+      <label>
+        Footfall
+        <input type="number" [(ngModel)]="hygieneData.footfall">
+      </label>
+
+      <label>
+        Hours Since Cleaning
+        <input type="number" [(ngModel)]="hygieneData.hours_since_cleaning">
+      </label>
+    </div>
+
+    <button (click)="predictRisk()">Predict Hygiene Risk</button>
+
+    @if (prediction) {
+      <div class="result-card">
+        <h3>Prediction: {{ prediction.prediction }}</h3>
+        <p>Confidence: {{ prediction.confidence * 100 }}%</p>
       </div>
     }
-  </div>
+
+    @if (predictionError) {
+      <p class="error">{{ predictionError }}</p>
+    }
+  </section>
 </div>

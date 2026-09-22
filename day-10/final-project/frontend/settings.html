@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>HygieneSense | Settings</title>
+
+    <link
+        rel="stylesheet"
+        href="styles.css"
+    >
+</head>
+
+
+<body>
+
+<div class="app-layout">
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                🌿
+            </div>
+
+            <div>
+
+                <h2>
+                    HygieneSense
+                </h2>
+
+                <span>
+                    Smart Facility Analytics
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <nav class="navigation">
+
+            <button
+                class="nav-item"
+                data-page="index.html"
+            >
+                <span>⌂</span>
+                Dashboard
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-page="assessment.html"
+            >
+                <span>＋</span>
+                New Assessment
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-page="history.html"
+            >
+                <span>◷</span>
+                Prediction History
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-page="facilities.html"
+            >
+                <span>▦</span>
+                Facilities
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-page="analytics.html"
+            >
+                <span>◔</span>
+                Analytics
+            </button>
+
+
+            <button
+                class="nav-item active"
+                data-page="settings.html"
+            >
+                <span>⚙</span>
+                Settings
+            </button>
+
+        </nav>
+
+
+        <div class="sidebar-footer">
+
+            <div class="system-status">
+
+                <div class="status-dot"></div>
+
+                <div>
+
+                    <strong>
+                        Prediction System
+                    </strong>
+
+                    <small>
+                        Ready for assessment
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="main-content">
+
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <span class="eyebrow">
+                    SYSTEM CONFIGURATION
+                </span>
+
+                <h1>
+                    Settings
+                </h1>
+
+                <p>
+                    Manage the appearance and system information.
+                </p>
+
+            </div>
+
+
+            <div class="topbar-actions">
+
+                <div
+                    class="api-status"
+                    id="apiStatus"
+                >
+                    <span></span>
+                    Checking system...
+                </div>
+
+
+                <button
+                    class="theme-toggle"
+                    id="themeToggle"
+                    aria-label="Toggle theme"
+                >
+                    ☾
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+             PAGE HERO
+        ========================== -->
+
+        <section class="page-hero">
+
+            <span class="eyebrow">
+                PREFERENCES
+            </span>
+
+            <h2>
+                Make the workspace yours.
+            </h2>
+
+            <p>
+                Change the interface appearance and
+                review the configuration of the prediction system.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             SETTINGS GRID
+        ========================== -->
+
+        <section class="settings-grid">
+
+
+            <!-- APPEARANCE -->
+
+            <div class="dashboard-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            APPEARANCE
+                        </span>
+
+                        <h3>
+                            Theme
+                        </h3>
+
+                    </div>
+
+                    <div class="card-symbol">
+                        ◐
+                    </div>
+
+                </div>
+
+
+                <div class="setting-row">
+
+                    <div>
+
+                        <strong>
+                            Light / Dark Mode
+                        </strong>
+
+                        <p>
+                            Switch between the light and dark interface.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="primary-button"
+                        id="settingsThemeToggle"
+                        type="button"
+                    >
+                        Toggle Theme
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PREDICTION SYSTEM -->
+
+            <div class="dashboard-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            MACHINE LEARNING
+                        </span>
+
+                        <h3>
+                            Prediction System
+                        </h3>
+
+                    </div>
+
+                    <div class="card-symbol">
+                        ◉
+                    </div>
+
+                </div>
+
+
+                <div class="info-list">
+
+                    <div>
+
+                        <span>
+                            Model Type
+                        </span>
+
+                        <strong>
+                            Classification
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Risk Classes
+                        </span>
+
+                        <strong>
+                            High / Low
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Model File
+                        </span>
+
+                        <strong>
+                            best_model.joblib
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Backend
+                        </span>
+
+                        <strong>
+                            Flask
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ASSESSMENT FEATURES -->
+
+            <div class="dashboard-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            ASSESSMENT
+                        </span>
+
+                        <h3>
+                            Input Features
+                        </h3>
+
+                    </div>
+
+                    <div class="card-symbol">
+                        ✓
+                    </div>
+
+                </div>
+
+
+                <div class="feature-tags">
+
+                    <span>
+                        Cleanliness Score
+                    </span>
+
+                    <span>
+                        Odor Score
+                    </span>
+
+                    <span>
+                        Waste Level
+                    </span>
+
+                    <span>
+                        Water Availability
+                    </span>
+
+                    <span>
+                        Footfall
+                    </span>
+
+                    <span>
+                        Complaints
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- DATABASE -->
+
+            <div class="dashboard-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            DATABASE
+                        </span>
+
+                        <h3>
+                            Storage
+                        </h3>
+
+                    </div>
+
+                    <div class="card-symbol">
+                        ▤
+                    </div>
+
+                </div>
+
+
+                <div class="info-list">
+
+                    <div>
+
+                        <span>
+                            Database
+                        </span>
+
+                        <strong>
+                            MySQL
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Database Name
+                        </span>
+
+                        <strong>
+                            hygiene_prediction_db
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Facilities Table
+                        </span>
+
+                        <strong>
+                            facilities
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Predictions Table
+                        </span>
+
+                        <strong>
+                            predictions
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- API -->
+
+            <div class="dashboard-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            CONNECTION
+                        </span>
+
+                        <h3>
+                            Backend API
+                        </h3>
+
+                    </div>
+
+                    <div class="card-symbol">
+                        ⇄
+                    </div>
+
+                </div>
+
+
+                <div class="connection-status">
+
+                    <div class="status-dot"></div>
+
+                    <div>
+
+                        <strong>
+                            Flask API
+                        </strong>
+
+                        <p>
+                            Running on
+                            <code>127.0.0.1:5001</code>
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT -->
+
+            <div class="dashboard-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            PROJECT
+                        </span>
+
+                        <h3>
+                            HygieneSense
+                        </h3>
+
+                    </div>
+
+                    <div class="card-symbol">
+                        🌿
+                    </div>
+
+                </div>
+
+
+                <p class="setting-description">
+                    Smart Facility Hygiene Risk Prediction System
+                    developed as the final project for the
+                    10-Day Intern Technical Training.
+                </p>
+
+
+                <div class="project-stack">
+
+                    <span>
+                        Python
+                    </span>
+
+                    <span>
+                        Flask
+                    </span>
+
+                    <span>
+                        MySQL
+                    </span>
+
+                    <span>
+                        Scikit-learn
+                    </span>
+
+                    <span>
+                        HTML
+                    </span>
+
+                    <span>
+                        CSS
+                    </span>
+
+                    <span>
+                        JavaScript
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             FOOTER
+        ========================== -->
+
+        <footer class="footer">
+
+            <span>
+                HygieneSense · Smart Facility Hygiene Risk Prediction
+            </span>
+
+            <span>
+                Flask API · MySQL · Machine Learning
+            </span>
+
+        </footer>
+
+
+    </main>
+
+</div>
+
+
+<script src="app.js"></script>
+
+</body>
+
+</html>
