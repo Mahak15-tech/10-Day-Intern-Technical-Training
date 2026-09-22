@@ -29,7 +29,7 @@ and learning outcomes completed during the internship training.
 | Day 7 | Next.js & Node.js |✅ Completed |
 | Day 8 | SQL & Laravel |✅ Completed|
 | Day 9 | Angular & RxJS |✅ Completed|
-| Day 10 | Final Project & Presentation |✅Completed| 
+| Day 10 | Final Project & Presentation |✅ Completed| 
 
 **Current Progress: 10 / 10 Days**
 
