@@ -53,7 +53,7 @@ The project combines **Machine Learning, Python, Flask, MySQL and a web-based fr
 ---
 
 ## Project Structure
-
+```text
 final-project/
 │
 ├── backend/
@@ -108,9 +108,10 @@ final-project/
         ├── correlation_matrix.png
         ├── feature_distributions_by_risk.png
         └── model_comparison.png
+```
 ---
-
 ## Machine Learning Workflow
+```text
 Raw Facility Dataset
         ↓
 Data Preprocessing
@@ -128,156 +129,175 @@ Model Evaluation
 Best Model Selection
         ↓
 New Facility Prediction
+```
 ---
 ## Input Features
 
 The prediction system uses the following features:
 
--Cleanliness Score
--Odor Score
--Waste Level
--Water Availability
--Footfall
--Complaints
+- Cleanliness Score
+- Odor Score
+- Waste Level
+- Water Availability
+- Footfall
+- Complaints
 
 The model predicts:
-
+```text
 High Risk
 Low Risk
+```
 ---
 ## Machine Learning Models
 
 The following models are trained and compared:
 
-1.Logistic Regression
-2.Decision Tree
-3,Random Forest
+- 1.Logistic Regression
+- 2.Decision Tree
+- 3.Random Forest
 
 The models are evaluated using:
 
--Accuracy
--Precision
--Recall
--F1 Score
+- Accuracy
+- Precision
+- Recall
+- F1 Score
 
 The selected model is saved as:
-
+```text
 ml/models/best_model.joblib
+```
 ---
 ## Backend API
 
 The Flask backend provides APIs for:
 
 Check API
--GET /
+```text
+GET /
+```
 Get Facilities
--GET /facilities
+```text
+GET /facilities
+```
 Generate Prediction
--POST /predict
+```text
+POST /predict
+```
 Get Prediction History
--GET /predictions
+```text
+GET /predictions
+```
 Save Prediction
--POST /save-prediction
+```text
+POST /save-prediction
+```
 ---
 ## Database
 
 The project uses MySQL database:
-
+```text
 hygiene_prediction_db
-
+```
 ## Main tables:
-
+```text
 facilities
-
--Stores registered facility information.
-
+```
+Stores registered facility information.
+```text
 predictions
+```
+Stores generated hygiene risk predictions and their input values.
 
--Stores generated hygiene risk predictions and their input values.
 ---
 
 ## Frontend Pages
-## Dashboard
+### Dashboard
 
 Provides an overview of:
 
--Registered facilities
--Total predictions
--High-risk predictions
--Low-risk predictions
--Recent prediction activity
--Risk distribution
+- Registered facilities
+- Total predictions
+- High-risk predictions
+- Low-risk predictions
+- Recent prediction activity
+- Risk distribution
 
-## New Assessment
+### New Assessment
 
 Allows users to enter facility conditions and generate a hygiene risk prediction.
 
-## Prediction History
+### Prediction History
 
 Displays previously stored predictions.
 
-## Facilities
+### Facilities
 
 Displays registered facilities and their locations.
 
-## Analytics
+### Analytics
 
 Provides visual analytics of prediction data.
 
-## Settings
+### Settings
 
 Contains application and appearance settings.
+
 ---
 
 ## How to Run
 1. Install Dependencies
 
 Open PowerShell in the backend folder:
-
+```text
 pip install -r requirements.txt
+```
 2. Initialize MySQL Database
 
 Make sure MySQL Server is running.
 
 Run:
-
+```text
 python database/init_db.py
-
+```
 This creates the required database and tables.
 
 3. Start Flask Backend
 
 From the final-project folder:
-
+```text
 python backend/app.py
-
+```
 The backend runs at:
-
+```text
 http://127.0.0.1:5001
+```
+
 4. Open Frontend
 
 Open:
-
+```text
 frontend/index.html
-
+```
 using a local server such as VS Code Live Server.
+
 ---
 ## Features
--Machine learning based hygiene risk prediction
--Multiple model comparison
--Facility management
--Prediction history
--MySQL data storage
--Interactive analytics
--Responsive dashboard
--Light and dark theme
--Separate frontend pages
--Flask REST API
+- Machine learning based hygiene risk prediction
+- Multiple model comparison
+- Facility management
+- Prediction history
+- MySQL data storage
+- Interactive analytics
+- Responsive dashboard
+- Light and dark theme
+- Separate frontend pages
+- Flask REST API
 ---
 ## Project Outcome
 
 The project demonstrates an end-to-end machine learning application that connects:
-
+```text
 Machine Learning
         +
 Python Backend
@@ -285,23 +305,24 @@ Python Backend
 MySQL Database
         +
 Web Frontend
-
+```
 The system can be used to assess facility conditions, generate hygiene risk predictions and monitor prediction results through a centralized dashboard.
+
 ---
 
 ## Day 10 Deliverables
--Final AI/ML project
--Data preprocessing
--Feature engineering
--Exploratory data analysis
--Feature selection
--Machine learning model training
--Model evaluation
--Prediction system
--Flask API
--MySQL database
--Web dashboard
--Project documentation
+- Final AI/ML project
+- Data preprocessing
+- Feature engineering
+- Exploratory data analysis
+- Feature selection
+- Machine learning model training
+- Model evaluation
+- Prediction system
+- Flask API
+- MySQL database
+- Web dashboard
+- Project documentation
 ---
 ## Author
 
