@@ -62,7 +62,7 @@ def home():
     })
 
 
-@app.route("/facilities", methods=["GET"])
+@app.route("/api/facilities", methods=["GET"])
 def get_facilities():
 
     try:
@@ -90,7 +90,7 @@ def get_facilities():
         return jsonify({
             "error": str(error)
         }), 500
-@app.route("/dataset", methods=["GET"])
+@app.route("/api/dataset", methods=["GET"])
 def get_dataset():
 
     try:
@@ -110,7 +110,7 @@ def get_dataset():
             "error": str(error)
         }), 500
 
-@app.route("/predict", methods=["POST"])
+@app.route("/api/predict", methods=["POST"])
 def predict():
 
     try:
@@ -170,7 +170,7 @@ def predict():
         }), 400
 
 
-@app.route("/predictions", methods=["GET"])
+@app.route("/api/predictions", methods=["GET"])
 def get_predictions():
 
     try:
@@ -200,7 +200,7 @@ def get_predictions():
         }), 500
 
 
-@app.route("/save-prediction", methods=["POST"])
+@app.route("/api/save-prediction", methods=["POST"])
 def save_prediction():
 
     try:
