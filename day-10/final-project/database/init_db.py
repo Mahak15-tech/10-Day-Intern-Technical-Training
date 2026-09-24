@@ -1,9 +1,17 @@
+import csv
 import mysql.connector
 from pathlib import Path
 
 
 BASE_DIR = Path(__file__).resolve().parent
 SCHEMA_FILE = BASE_DIR / "schema.sql"
+
+DATASET_FILE = (
+    BASE_DIR.parent
+    / "ml"
+    / "dataset"
+    / "cleaned_facility_data.csv"
+)
 
 
 DB_CONFIG = {
@@ -17,13 +25,32 @@ DB_CONFIG = {
 DATABASE_NAME = "hygiene_prediction_db"
 
 
-FACILITIES = [
-    ("FAC-1001", "North Zone"),
-    ("FAC-1002", "South Zone"),
-    ("FAC-1003", "East Zone"),
-    ("FAC-1004", "West Zone"),
-    ("FAC-1005", "Central Zone")
-]
+def load_facilities_from_csv():
+
+    facilities = []
+
+    with open(
+        DATASET_FILE,
+        "r",
+        encoding="utf-8"
+    ) as file:
+
+        reader = csv.DictReader(file)
+
+        for row in reader:
+
+            facility_id = row["facility_id"].strip()
+            location = row["location"].strip()
+
+            if not any(
+                existing[0] == facility_id
+                for existing in facilities
+            ):
+                facilities.append(
+                    (facility_id, location)
+                )
+
+    return facilities
 
 
 def initialize_database():
@@ -63,17 +90,30 @@ def initialize_database():
     ]
 
     for statement in statements:
-
         cursor.execute(statement)
 
-    # Add sample facilities
+    # Load real facilities from CSV
+    print("Loading facilities from dataset...")
+
+    facilities = load_facilities_from_csv()
+
+    print(
+        f"Found {len(facilities)} facilities in dataset."
+    )
+
+    # Remove old sample facilities
+    cursor.execute(
+        "DELETE FROM facilities"
+    )
+
+    # Insert real dataset facilities
     cursor.executemany(
         """
-        INSERT IGNORE INTO facilities
+        INSERT INTO facilities
         (facility_id, location)
         VALUES (%s, %s)
         """,
-        FACILITIES
+        facilities
     )
 
     connection.commit()

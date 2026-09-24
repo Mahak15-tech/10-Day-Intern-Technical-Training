@@ -13,6 +13,7 @@ CORS(app)
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 MODEL_DIR = BASE_DIR / "ml" / "models"
+DATASET_FILE = BASE_DIR / "ml" / "dataset" / "cleaned_facility_data.csv"
 
 
 FEATURES = [
@@ -87,7 +88,25 @@ def get_facilities():
         return jsonify({
             "error": str(error)
         }), 500
+@app.route("/dataset", methods=["GET"])
+def get_dataset():
 
+    try:
+        data = pd.read_csv(DATASET_FILE)
+
+        data = data.fillna("")
+
+        return jsonify({
+            "total_records": len(data),
+            "columns": list(data.columns),
+            "records": data.to_dict(orient="records")
+        })
+
+    except Exception as error:
+
+        return jsonify({
+            "error": str(error)
+        }), 500
 
 @app.route("/predict", methods=["POST"])
 def predict():

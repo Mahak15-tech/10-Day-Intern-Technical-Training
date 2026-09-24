@@ -3312,3 +3312,17 @@ body.dark .footer {
     }
 
 }
+/* Prediction result typography */
+#predictionText {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 8px 0;
+}
+
+#confidenceText {
+    display: block;
+    font-size: 28px;
+    font-weight: 700;
+    margin-top: 8px;
+}

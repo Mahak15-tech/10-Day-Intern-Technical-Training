@@ -1,5 +1,5 @@
 const API_URL = "http://127.0.0.1:5001";
-
+let facilityDataset = [];
 
 // =====================================================
 // INITIALIZATION
@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setupTheme();
     setupNavigation();
     checkAPIStatus();
-
+    loadDataset();
     loadDashboard();
     setupAssessment();
     showPredictionHistory();
@@ -185,6 +185,43 @@ async function checkAPIStatus() {
 
 }
 
+// =====================================================
+// DATASET
+// =====================================================
+
+async function loadDataset() {
+
+    try {
+
+        const response =
+            await fetch(`${API_URL}/dataset`);
+
+        if (!response.ok) {
+            throw new Error("Unable to load dataset");
+        }
+
+        const result =
+            await response.json();
+
+        facilityDataset =
+            result.records || [];
+
+        console.log(
+            "Dataset loaded:",
+            facilityDataset.length,
+            "records"
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Dataset loading error:",
+            error
+        );
+
+    }
+
+}
 
 // =====================================================
 // DASHBOARD
@@ -789,7 +826,6 @@ async function makePrediction() {
             result
         );
 
-
     } catch (error) {
 
         console.error(
@@ -962,12 +998,17 @@ async function savePrediction(
 
     } catch (error) {
 
-        console.error(
-            "Saving prediction failed:",
-            error
-        );
+    console.error(
+        "Saving prediction failed:",
+        error
+    );
 
-    }
+    alert(
+        `Saving prediction failed: ${error.message}`
+    );
+
+    throw error;
+}
 
 }
 
