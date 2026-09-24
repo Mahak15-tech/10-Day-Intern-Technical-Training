@@ -1,0 +1,288 @@
+<div class="dashboard-page">
+
+  <!-- Header -->
+  <div class="dashboard-header">
+    <div>
+      <span class="eyebrow">FACILITY OVERVIEW</span>
+
+      <h1>Good day, Admin 🌿</h1>
+
+      <p>
+        Monitor hygiene conditions and keep every facility healthy.
+      </p>
+    </div>
+
+    <a routerLink="/inspection" class="new-button">
+      + New Assessment
+    </a>
+  </div>
+
+
+  <!-- Statistics -->
+  <div class="stats-grid">
+
+    <div class="stat-card">
+      <div class="stat-icon facility-icon">⌂</div>
+
+      <div>
+        <span>Total Facilities</span>
+        <strong>{{ totalFacilities }}</strong>
+      </div>
+    </div>
+
+
+    <div class="stat-card">
+      <div class="stat-icon inspection-icon">◷</div>
+
+      <div>
+        <span>Total Inspections</span>
+        <strong>{{ totalInspections }}</strong>
+      </div>
+    </div>
+
+
+    <div class="stat-card high">
+      <div class="stat-icon high-icon">!</div>
+
+      <div>
+        <span>High Risk</span>
+        <strong>{{ highRisk }}</strong>
+      </div>
+    </div>
+
+
+    <div class="stat-card low">
+      <div class="stat-icon low-icon">✓</div>
+
+      <div>
+        <span>Low Risk</span>
+        <strong>{{ lowRisk }}</strong>
+      </div>
+    </div>
+
+
+    <div class="stat-card medium">
+      <div class="stat-icon medium-icon">!</div>
+
+      <div>
+        <span>Medium Risk</span>
+        <strong>{{ mediumRisk }}</strong>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- Main content -->
+  <div class="dashboard-columns">
+
+
+    <!-- Recent inspections -->
+    <section class="dashboard-card">
+
+      <div class="card-heading">
+
+        <div>
+          <span class="eyebrow">LATEST ACTIVITY</span>
+
+          <h2>Recent Inspections</h2>
+        </div>
+
+        <a routerLink="/history">
+          View all →
+        </a>
+
+      </div>
+
+
+      <div
+        class="inspection-list"
+        *ngIf="inspections.length > 0"
+      >
+
+        <div
+          class="inspection-item"
+          *ngFor="let inspection of inspections.slice(0, 5)"
+        >
+
+          <div class="inspection-info">
+
+            <strong>
+              {{ inspection.facility_id }}
+            </strong>
+
+            <small>
+              {{ inspection.location || 'Facility inspection' }}
+            </small>
+
+          </div>
+
+
+          <span
+            class="risk-badge"
+            [class.low]="
+              (inspection.hygiene_risk || inspection.predicted_risk) === 'Low'
+            "
+            [class.medium]="
+              (inspection.hygiene_risk || inspection.predicted_risk) === 'Medium'
+            "
+            [class.high]="
+              (inspection.hygiene_risk || inspection.predicted_risk) === 'High'
+            "
+          >
+            {{ inspection.hygiene_risk || inspection.predicted_risk }}
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div
+        class="empty-state"
+        *ngIf="inspections.length === 0"
+      >
+
+        <div>🌱</div>
+
+        <p>
+          No inspections recorded yet.
+        </p>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- Risk overview -->
+    <section class="dashboard-card risk-card">
+
+      <div class="card-heading">
+
+        <div>
+          <span class="eyebrow">RISK OVERVIEW</span>
+
+          <h2>Hygiene Status</h2>
+        </div>
+
+      </div>
+
+
+      <div class="risk-summary">
+
+        <div class="risk-total">
+          <strong>{{ totalInspections }}</strong>
+
+          <span>Inspections</span>
+        </div>
+
+      </div>
+
+
+      <div class="risk-row">
+
+        <div>
+          <span class="risk-dot high-dot"></span>
+          <span>High Risk</span>
+        </div>
+
+        <strong>{{ highRisk }}</strong>
+
+      </div>
+
+
+      <div class="risk-row">
+
+        <div>
+          <span class="risk-dot medium-dot"></span>
+          <span>Medium Risk</span>
+        </div>
+
+        <strong>{{ mediumRisk }}</strong>
+
+      </div>
+
+
+      <div class="risk-row">
+
+        <div>
+          <span class="risk-dot low-dot"></span>
+          <span>Low Risk</span>
+        </div>
+
+        <strong>{{ lowRisk }}</strong>
+
+      </div>
+
+    </section>
+
+  </div>
+
+
+
+  <!-- Registered facilities -->
+  <section class="dashboard-card facilities-card">
+
+    <div class="card-heading">
+
+      <div>
+        <span class="eyebrow">REGISTERED FACILITIES</span>
+
+        <h2>Facilities</h2>
+      </div>
+
+      <a routerLink="/facilities">
+        View facilities →
+      </a>
+
+    </div>
+
+
+    <div
+      class="facility-list"
+      *ngIf="facilities.length > 0"
+    >
+
+      <div
+        class="facility-item"
+        *ngFor="let facility of facilities.slice(0, 5)"
+      >
+
+        <div class="facility-info">
+
+          <strong>
+            {{ facility.facility_id }}
+          </strong>
+
+          <small>
+            {{ facility.location }}
+          </small>
+
+        </div>
+
+        <span class="active-badge">
+          Active
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div
+      class="empty-state"
+      *ngIf="facilities.length === 0"
+    >
+
+      <div>🌱</div>
+
+      <p>
+        No facilities available.
+      </p>
+
+    </div>
+
+  </section>
+
+</div>

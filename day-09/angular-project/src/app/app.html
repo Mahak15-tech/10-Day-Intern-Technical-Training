@@ -1,0 +1,98 @@
+<div class="app-shell">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+
+    <div class="brand">
+      <div class="brand-icon">🌿</div>
+
+      <div>
+        <h1>HygieneSense</h1>
+        <p>Smart Facility Analytics</p>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+
+      <a routerLink="/dashboard" routerLinkActive="active">
+        <span>⌂</span>
+        Dashboard
+      </a>
+
+      <a routerLink="/inspection" routerLinkActive="active">
+        <span>✦</span>
+        Assessment
+      </a>
+
+      <a routerLink="/history" routerLinkActive="active">
+        <span>◷</span>
+        History
+      </a>
+
+      <a routerLink="/facilities" routerLinkActive="active">
+        <span>▣</span>
+        Facilities
+      </a>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+
+      <div class="status-card">
+        <span class="status-dot"></span>
+        <div>
+          <strong>System Online</strong>
+          <small>API connected</small>
+        </div>
+      </div>
+
+    </div>
+
+  </aside>
+
+
+  <!-- Main Area -->
+  <main class="main-content">
+
+    <header class="topbar">
+
+      <div>
+        <span class="page-label">FACILITY MONITORING</span>
+        <h2>HygieneSense</h2>
+      </div>
+
+      <div class="topbar-actions">
+
+        <button class="theme-button">
+          ☼
+        </button>
+
+        <div class="profile">
+          <div class="profile-avatar">M</div>
+
+          <div>
+            <strong>Admin</strong>
+            <small>Facility Manager</small>
+          </div>
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <section class="page-content">
+
+      <router-outlet></router-outlet>
+
+    </section>
+
+
+    <footer class="footer">
+      <span>HygieneSense</span>
+      <span>Smart Facility Analytics</span>
+    </footer>
+
+  </main>
+
+</div>

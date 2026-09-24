@@ -1,160 +1,111 @@
 # Day 4 – Machine Learning & Model Evaluation
 
-## 📌 Overview
+## Project Overview
+Day 4 focuses on supervised machine learning: preprocessing, feature
+engineering, model training, evaluation, and prediction. The
+practical project is a **Facility Hygiene Risk Prediction System**
+that classifies facilities as High or Low hygiene risk based on
+inspection data.
 
-Day 4 focused on machine learning concepts, data preprocessing,
-feature engineering, model training, evaluation, and predictions.
+## Problem Statement
+Manually reviewing facility inspection data to judge hygiene risk is
+slow and inconsistent. The goal was to train a model that can predict
+hygiene risk (High/Low) from measurable inputs like cleanliness
+score, odor score, waste level, and footfall — and to compare more
+than one model to see which performs best.
 
-The practical project is a **Facility Hygiene Risk Prediction System**.
+## Features
+- Data preprocessing and feature engineering pipeline
+- Two trained classification models: Logistic Regression and Random
+  Forest
+- Model evaluation with accuracy, precision, recall, F1-score,
+  classification report, and confusion matrix
+- Prediction script that scores new facility records with both
+  models and reports confidence
+- Trained models persisted with Joblib for reuse without retraining
 
----
+## Technology Stack
+- Language: Python 3
+- Libraries: Pandas, NumPy, Scikit-learn, Joblib
 
-## 🎯 Objectives
+## Architecture
+```
+cleaned_facility_data.csv
+        ↓ preprocess.py
+Preprocessed / feature-engineered data
+        ↓ train.py (80/20 split)
+Logistic Regression  +  Random Forest  →  scaler.joblib
+        ↓ evaluate.py
+Accuracy / Precision / Recall / F1 / Confusion Matrix
+        ↓ predict.py
+New facility record → predicted hygiene risk + confidence
+```
 
-- Understand supervised machine learning
-- Perform data preprocessing
-- Apply feature engineering
-- Train multiple classification models
-- Evaluate model performance
-- Generate predictions for new facility records
-- Save trained models using Joblib
+## Database Design
+Not applicable — data is read from and written to CSV files, not a
+database.
 
----
+## API Documentation
+Not applicable — model interaction happens via the `predict.py`
+script (see day-10's Flask API for the served version of this model).
 
-## 📂 Project Structure
+## Installation
+```bash
+git clone <repo-url>
+cd day-04
+pip install pandas numpy scikit-learn joblib
+```
 
-day-04/
-│
-├── dataset/
-│   └── cleaned_facility_data.csv
-│
-├── preprocessing/
-│   ├── preprocess.py
-│   └── feature_engineered_data.csv
-│
-├── models/
-│   ├── train.py
-│   ├── logistic_regression.joblib
-│   ├── random_forest.joblib
-│   └── scaler.joblib
-│
-├── evaluation/
-│   └── evaluate.py
-│
-├── predictions/
-│   └── predict.py
-│
-└── README.md
+## Environment Variables
+Not applicable.
 
----
+## How to Run
+```bash
+# 1. Preprocess the data
+python preprocessing/preprocess.py
 
-## 🛠️ Technologies Used
+# 2. Train the models
+python models/train.py
 
-- Python
-- Pandas
-- NumPy
-- Scikit-learn
-- Joblib
+# 3. Evaluate model performance
+python evaluation/evaluate.py
 
----
+# 4. Predict on new facility records
+python predictions/predict.py
+```
 
-## 🔄 Workflow
+## Screenshots
+Not applicable — output is printed to the console.
 
-1. Load the facility dataset
-2. Perform data preprocessing
-3. Apply feature engineering
-4. Generate hygiene risk labels
-5. Split data into training and testing sets
-6. Train Logistic Regression
-7. Train Random Forest Classifier
-8. Evaluate model performance
-9. Predict hygiene risk for new facilities
+## Challenges Faced
+- Random Forest and Logistic Regression have different input
+  requirements — Logistic Regression needs scaled features, Random
+  Forest doesn't.
 
----
+## Solutions
+- Used `StandardScaler` (saved as `scaler.joblib`) only for the
+  Logistic Regression pipeline, while feeding Random Forest the
+  unscaled features directly, so each model gets the input it needs
+  without duplicating the dataset.
 
-## 🤖 Machine Learning Models
+## Future Improvements
+- Add cross-validation instead of a single train/test split
+- Try additional models (e.g. Gradient Boosting) and compare
+- Add feature importance visualization
+- Wire this pipeline into a proper REST API (extended in Day 10)
 
-### 1. Logistic Regression
+## Dataset Information
+- Total records: 201 (160 training / 41 testing)
+- High-risk records: 101 · Low-risk records: 100
+- Features: Cleanliness Score, Odor Score, Waste Level, Complaints,
+  Footfall, Hours Since Cleaning
+- Target: `hygiene_risk` (High / Low)
 
-Used as a classification model to predict hygiene risk.
+## Disclaimer
+This project uses a facility hygiene dataset for educational machine
+learning practice. Predictions should not be treated as certified
+health or safety assessments.
 
-StandardScaler is used to scale the input features.
-
-### 2. Random Forest Classifier
-
-An ensemble learning algorithm that combines multiple
-decision trees to perform classification.
-
-Random Forest does not require feature scaling.
-
----
-
-## 📊 Dataset Information
-
-- Total records: 201
-- Training records: 160
-- Testing records: 41
-- High-risk records: 101
-- Low-risk records: 100
-
-### Features
-
-- Cleanliness Score
-- Odor Score
-- Waste Level
-- Complaints
-- Footfall
-- Hours Since Cleaning
-
-### Target
-
-`hygiene_risk`
-
-Possible values:
-
-- High
-- Low
-
----
-
-## 📈 Evaluation Metrics
-
-The models are evaluated using:
-
-- Accuracy
-- Precision
-- Recall
-- F1-score
-- Classification Report
-- Confusion Matrix
-
----
-
-## 🔮 Predictions
-
-The prediction script evaluates new facility inspection records
-using both trained machine learning models.
-
-Predictions are displayed in the terminal.
-
-Model confidence scores are also calculated.
-
----
-
-## 💾 Model Persistence
-
-Joblib is used to save and load trained models.
-
-Saved files:
-
-- logistic_regression.joblib
-- random_forest.joblib
-- scaler.joblib
-
----
-## ⚠️ Disclaimer
-
-This project uses a facility hygiene dataset for educational
-machine learning practice. Predictions should not be treated
-as certified health or safety assessments.
----
+## Author
+**Mahak Sunil Kamble**
+GitHub: [Mahak15-tech](https://github.com/Mahak15-tech)

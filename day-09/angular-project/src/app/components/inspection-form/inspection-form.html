@@ -1,0 +1,154 @@
+<div class="inspection-page">
+
+  <div class="page-intro">
+    <div>
+      <span class="eyebrow">HYGIENE ASSESSMENT</span>
+      <h1>New Facility Assessment</h1>
+      <p>Enter facility conditions to predict the hygiene risk level.</p>
+    </div>
+  </div>
+
+  <div class="assessment-layout">
+
+    <section class="form-card">
+
+      <div class="card-title">
+        <div>
+          <span class="eyebrow">ASSESSMENT INPUTS</span>
+          <h2>Facility Conditions</h2>
+        </div>
+        <span class="leaf-icon">🌿</span>
+      </div>
+
+      <form (ngSubmit)="predictRisk()">
+
+        <div class="form-group">
+          <label>Facility ID</label>
+          <input
+            type="text"
+            name="facility_id"
+            [(ngModel)]="formData.facility_id"
+            placeholder="Example: FAC-1001"
+          >
+        </div>
+
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label>Cleanliness Score</label>
+            <input
+              type="number"
+              name="cleanliness_score"
+              [(ngModel)]="formData.cleanliness_score"
+              min="0"
+              max="10"
+              step="0.1"
+            >
+            <small>Score from 0 to 10</small>
+          </div>
+
+          <div class="form-group">
+            <label>Odor Score</label>
+            <input
+              type="number"
+              name="odor_score"
+              [(ngModel)]="formData.odor_score"
+              min="0"
+              max="10"
+              step="0.1"
+            >
+            <small>Score from 0 to 10</small>
+          </div>
+
+          <div class="form-group">
+            <label>Waste Level (%)</label>
+            <input
+              type="number"
+              name="waste_level"
+              [(ngModel)]="formData.waste_level"
+              min="0"
+              max="100"
+            >
+            <small>Current waste level</small>
+          </div>
+
+          <div class="form-group">
+            <label>Water Availability</label>
+
+            <select
+              name="water_availability"
+              [(ngModel)]="formData.water_availability"
+            >
+              <option [ngValue]="1">Available</option>
+              <option [ngValue]="0">Not Available</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Daily Footfall</label>
+            <input
+              type="number"
+              name="footfall"
+              [(ngModel)]="formData.footfall"
+              min="0"
+            >
+            <small>Approximate daily visitors</small>
+          </div>
+
+          <div class="form-group">
+            <label>Complaints</label>
+            <input
+              type="number"
+              name="complaints"
+              [(ngModel)]="formData.complaints"
+              min="0"
+            >
+            <small>Reported complaints</small>
+          </div>
+
+        </div>
+
+        <button
+          type="submit"
+          class="predict-button"
+          [disabled]="loading"
+        >
+          <span *ngIf="!loading">Assess Hygiene Risk →</span>
+          <span *ngIf="loading">Analyzing...</span>
+        </button>
+
+      </form>
+
+    </section>
+
+    <section class="result-card">
+
+      <div class="result-icon">✦</div>
+
+      <span class="eyebrow">PREDICTION RESULT</span>
+
+      <h2 *ngIf="!submitted">
+        Ready for Assessment
+      </h2>
+
+      <h2
+        *ngIf="submitted"
+        [class.high-result]="prediction === 'High'"
+        [class.low-result]="prediction === 'Low'"
+      >
+        {{ prediction }} Risk
+      </h2>
+
+      <p *ngIf="!submitted">
+        Complete the facility assessment to see the hygiene risk level.
+      </p>
+
+      <div *ngIf="errorMessage" class="error-box">
+        {{ errorMessage }}
+      </div>
+
+    </section>
+
+  </div>
+
+</div>

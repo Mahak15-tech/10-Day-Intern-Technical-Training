@@ -1,0 +1,93 @@
+<div class="facility-page">
+    
+  <div class="page-intro">
+    <div>
+      <span class="eyebrow">FACILITY MANAGEMENT</span>
+      <h1>Facilities</h1>
+      <p>View and search registered facilities.</p>
+    </div>
+
+    <div class="facility-count">
+      <strong>{{ filteredFacilities.length }}</strong>
+      <span>Facilities</span>
+    </div>
+  </div>
+
+  <section class="toolbar">
+
+    <div class="search-box">
+      <span>⌕</span>
+
+      <input
+        type="text"
+        [(ngModel)]="searchText"
+        (input)="searchFacilities()"
+        placeholder="Search facility or location..."
+      >
+    </div>
+
+    <button
+      class="refresh-button"
+      (click)="loadFacilities()"
+    >
+      ↻ Refresh
+    </button>
+
+  </section>
+
+  <section class="facility-grid">
+
+    <div
+      class="facility-card"
+      *ngFor="let facility of filteredFacilities"
+      [routerLink]="['/facility-details']"
+      [queryParams]="{ id: facility.facility_id }"
+    >
+
+      <div class="card-top">
+
+        <div class="facility-icon">
+          🌿
+        </div>
+
+        <span class="status-badge">
+          Active
+        </span>
+
+      </div>
+
+      <div class="facility-info">
+
+        <span class="facility-label">
+          FACILITY ID
+        </span>
+
+        <h2>
+          {{ facility.facility_id }}
+        </h2>
+
+        <p>
+          📍 {{ facility.location }}
+        </p>
+
+      </div>
+
+      <div class="facility-footer">
+        <span>Hygiene monitoring</span>
+        <span class="online-dot"></span>
+      </div>
+
+    </div>
+
+  </section>
+
+  <div
+    class="empty-state"
+    *ngIf="filteredFacilities.length === 0"
+  >
+    <div>🌱</div>
+    <h3>No facilities found</h3>
+    <p>Try another facility ID or location.</p>
+  </div>
+
+</div>

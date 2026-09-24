@@ -1,0 +1,263 @@
+.history-page {
+  padding: 30px 10px;
+}
+
+/* Header */
+.page-intro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 7px;
+  color: #6b8975;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.page-intro h1 {
+  margin: 0;
+  color: #315c45;
+  font-family: Georgia, serif;
+  font-size: 30px;
+}
+
+.page-intro p {
+  margin: 7px 0 0;
+  color: #718078;
+  font-size: 13px;
+}
+
+.history-count {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.history-count strong {
+  color: #315c45;
+  font-size: 24px;
+}
+
+.history-count span {
+  color: #718078;
+  font-size: 11px;
+}
+
+/* Toolbar */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding: 16px;
+  background: white;
+  border: 1px solid #dce3dc;
+  border-radius: 15px;
+}
+
+.search-box {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  max-width: 450px;
+  padding: 0 13px;
+  border: 1px solid #cfd9d0;
+  border-radius: 10px;
+  background: white;
+}
+
+.search-box span {
+  color: #6b8975;
+  font-size: 16px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 11px 0;
+  border: none;
+  outline: none;
+  font-size: 12px;
+  color: #315c45;
+}
+
+.toolbar select {
+  padding: 11px 13px;
+  border: 1px solid #cfd9d0;
+  border-radius: 10px;
+  background: white;
+  color: #315c45;
+  font-size: 12px;
+  outline: none;
+}
+
+.refresh-button {
+  padding: 11px 15px;
+  border: none;
+  border-radius: 10px;
+  background: #315c45;
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.refresh-button:hover {
+  background: #274b38;
+}
+
+/* Table */
+.table-card {
+  overflow: hidden;
+  background: white;
+  border: 1px solid #dce3dc;
+  border-radius: 16px;
+  box-shadow: 0 5px 18px rgba(49, 92, 69, 0.06);
+}
+
+.table-header {
+  padding: 18px 20px;
+  border-bottom: 1px solid #edf1ed;
+}
+
+.table-header h2 {
+  margin: 0;
+  color: #315c45;
+  font-family: Georgia, serif;
+  font-size: 19px;
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  min-width: 950px;
+  border-collapse: collapse;
+}
+
+thead {
+  background: #315c45;
+}
+
+th {
+  padding: 14px 16px;
+  color: white;
+  text-align: left;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  white-space: nowrap;
+}
+
+td {
+  padding: 14px 16px;
+  border-top: 1px solid #edf1ed;
+  color: #526158;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+tbody tr:hover {
+  background: #f8faf7;
+}
+
+td strong {
+  color: #315c45;
+}
+
+/* Risk badges */
+.risk-badge {
+  display: inline-block;
+  width: fit-content;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.risk-badge.low {
+  background: #dce9df;
+  color: #4d7b5a;
+}
+
+.risk-badge.medium {
+  background: #fff4c2;
+  color: #8a6d00;
+}
+
+.risk-badge.high {
+  background: #f4dddd;
+  color: #a04f4f;
+}
+
+/* Empty state */
+.empty-state {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.empty-state div {
+  font-size: 30px;
+}
+
+.empty-state h3 {
+  margin: 10px 0 5px;
+  color: #315c45;
+  font-family: Georgia, serif;
+}
+
+.empty-state p {
+  margin: 0;
+  color: #718078;
+  font-size: 12px;
+}
+
+/* Responsive */
+@media (max-width: 850px) {
+  .page-intro {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .history-count {
+    align-items: flex-start;
+  }
+
+  .toolbar {
+    flex-wrap: wrap;
+  }
+
+  .search-box {
+    max-width: none;
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .history-page {
+    padding: 20px 5px;
+  }
+
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-box {
+    width: auto;
+  }
+
+  .toolbar select,
+  .refresh-button {
+    width: 100%;
+  }
+}

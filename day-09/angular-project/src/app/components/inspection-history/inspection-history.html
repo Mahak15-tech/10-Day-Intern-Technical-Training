@@ -1,0 +1,136 @@
+<div class="history-page">
+
+  <div class="page-intro">
+    <div>
+      <span class="eyebrow">INSPECTION RECORDS</span>
+      <h1>Inspection History</h1>
+      <p>Review hygiene inspections from the facility dataset.</p>
+    </div>
+
+    <div class="history-count">
+      <strong>{{ filteredInspections.length }}</strong>
+      <span>Records</span>
+    </div>
+  </div>
+
+  <section class="toolbar">
+
+    <div class="search-box">
+      <span>⌕</span>
+
+      <input
+        type="text"
+        [(ngModel)]="searchText"
+        (input)="filterInspections()"
+        placeholder="Search facility or location..."
+      >
+    </div>
+
+    <select
+      [(ngModel)]="selectedRisk"
+      (change)="filterInspections()"
+    >
+      <option value="All">All Risk Levels</option>
+      <option value="Low">Low Risk</option>
+      <option value="Medium">Medium Risk</option>
+      <option value="High">High Risk</option>
+    </select>
+
+    <button
+      class="refresh-button"
+      (click)="loadHistory()"
+    >
+      ↻ Refresh
+    </button>
+
+  </section>
+
+  <section class="table-card">
+
+    <div class="table-header">
+      <div>
+        <span class="eyebrow">RECORDS</span>
+        <h2>Facility Inspections</h2>
+      </div>
+    </div>
+
+    <div class="table-wrapper">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>Facility</th>
+            <th>Location</th>
+            <th>Cleanliness</th>
+            <th>Odor</th>
+            <th>Waste</th>
+            <th>Water</th>
+            <th>Risk</th>
+            <th>Inspection Date</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr *ngFor="let inspection of filteredInspections">
+
+            <td>
+              <strong>{{ inspection.facility_id }}</strong>
+            </td>
+
+            <td>
+              {{ inspection.location || '—' }}
+            </td>
+
+            <td>
+              {{ inspection.cleanliness_score }}
+            </td>
+
+            <td>
+              {{ inspection.odor_score }}
+            </td>
+
+            <td>
+              {{ inspection.waste_level }}%
+            </td>
+
+            <td>
+              {{ inspection.water_availability }}
+            </td>
+
+            <td>
+              <span
+                class="risk-badge"
+                [class.low]="(inspection.hygiene_risk || inspection.predicted_risk) === 'Low'"
+                [class.medium]="(inspection.hygiene_risk || inspection.predicted_risk) === 'Medium'"
+                [class.high]="(inspection.hygiene_risk || inspection.predicted_risk) === 'High'"
+              >
+                {{ inspection.hygiene_risk || inspection.predicted_risk }}
+              </span>
+            </td>
+
+            <td>
+              {{ inspection.inspection_date || inspection.created_at || '—' }}
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+    <div
+      class="empty-state"
+      *ngIf="filteredInspections.length === 0"
+    >
+      <div>🌱</div>
+      <h3>No inspection records found</h3>
+      <p>Try changing the search or risk filter.</p>
+    </div>
+
+  </section>
+
+</div>
