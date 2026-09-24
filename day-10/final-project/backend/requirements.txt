@@ -6,3 +6,4 @@ flask
 flask-cors
 mysql-connector-python
 matplotlib
+python-dotenv

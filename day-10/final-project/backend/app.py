@@ -4,7 +4,9 @@ import pandas as pd
 import joblib
 import mysql.connector
 from pathlib import Path
-
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
@@ -28,11 +30,11 @@ FEATURES = [
 
 # MySQL configuration
 DB_CONFIG = {
-    "host": "127.0.0.1",
-    "port": 3306,
-    "user": "root",
-    "password": "MYSQL_PASSWORD",  # Replace with your MySQL Workbench password
-    "database": "hygiene_prediction_db"
+    "host": os.getenv("DB_HOST", "127.0.0.1"),
+    "port": int(os.getenv("DB_PORT", "3306")),
+    "user": os.getenv("DB_USER", "root"),
+    "password": os.getenv("DB_PASSWORD", ""),
+    "database": os.getenv("DB_NAME", "hygiene_prediction_db")
 }
 
 
