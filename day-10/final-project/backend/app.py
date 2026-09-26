@@ -38,8 +38,8 @@ DB_CONFIG = {
 
     # TiDB Cloud TLS
     "ssl_ca": os.path.join(BASE_DIR, "isrgrootx1.pem"),
-    "ssl_verify_cert": True,
-    "ssl_verify_identity": True,
+    "ssl_verify_cert": False,
+    "ssl_verify_identity": False,
 }
 
 
