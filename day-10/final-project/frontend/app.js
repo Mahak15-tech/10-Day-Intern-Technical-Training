@@ -158,7 +158,7 @@ async function checkAPIStatus() {
     try {
 
         const response =
-            await fetch(`${API_URL}/`);
+            await fetch(`${API_URL}/facilities`);
 
         if (!response.ok) {
             throw new Error("API unavailable");
