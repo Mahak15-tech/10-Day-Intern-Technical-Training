@@ -34,8 +34,14 @@ DB_CONFIG = {
     "port": int(os.getenv("DB_PORT", "3306")),
     "user": os.getenv("DB_USER", "root"),
     "password": os.getenv("DB_PASSWORD", ""),
-    "database": os.getenv("DB_NAME", "hygiene_prediction_db")
+    "database": os.getenv("DB_NAME", "hygiene_prediction_db"),
+
+    # TiDB Cloud TLS
+    "ssl_ca": os.path.join(BASE_DIR, "isrgrootx1.pem"),
+    "ssl_verify_cert": True,
+    "ssl_verify_identity": True,
 }
+
 
 
 # Load ML model
